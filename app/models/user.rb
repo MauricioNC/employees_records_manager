@@ -5,4 +5,6 @@ class User < ApplicationRecord
     root: 2,
     developer: 3
   }
+
+  belongs_to :entity
 end
