@@ -10,15 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_26_054609) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_28_034637) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "entities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "entity_name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "file_name", null: false
@@ -28,6 +22,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_26_054609) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_records_on_user_id"
+  end
+
+  create_table "unities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "unity_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -40,10 +40,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_26_054609) do
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "entity_id", null: false
-    t.index ["entity_id"], name: "index_users_on_entity_id"
+    t.uuid "unity_id", null: false
+    t.index ["unity_id"], name: "index_users_on_unity_id"
   end
 
   add_foreign_key "records", "users"
-  add_foreign_key "users", "entities"
+  add_foreign_key "users", "unities"
 end

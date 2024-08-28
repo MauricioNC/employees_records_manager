@@ -6,6 +6,6 @@ class User < ApplicationRecord
     developer: 3
   }
 
-  belongs_to :entity
+  belongs_to :unity
   has_many :records
 end
