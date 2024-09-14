@@ -1,0 +1,25 @@
+<%= turbo_frame_tag @user do %>
+  <%= form_with model: @user do |f| %>
+    <div>
+      <%= f.label :name, 'Full name' %>
+      <%= f.text_field :name, placeholder: 'Enter your name' %>
+    </div>
+    <div>
+      <%= f.label :rfc, 'RFC' %>
+      <%= f.text_field :rfc, placeholder: 'Enter your RFC' %>
+    </div>
+    <div>
+      <%= f.label :email, 'email' %>
+      <%= f.text_field :email, placeholder: 'Enter your email' %>
+    </div>
+    <div>
+      <%= f.label :password, 'password' %>
+      <%= f.password_field :password, placeholder: 'Enter your password' %>
+    </div>
+    <%= f.submit "Crear cuenta" %>
+  <% end %>
+  <div>
+    <p>¿Ya tienes una cuenta?</p>
+    <%= link_to "Inicia sesión aquí", "/login" %>
+  </div>
+<% end %>

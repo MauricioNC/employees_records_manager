@@ -1,17 +1,19 @@
-<div>
-  <%= form_with model: @user, url: login_path do |f| %>
-    <div>
-      <%= f.label :rfc, 'RFC' %>
-      <%= f.text_field :rfc, placeholder: 'RFC' %>
-    </div>
-    <div>
-      <%= f.label :password, 'Contraseña' %>
-      <%= f.text_field :password, placeholder: 'Contraseña' %>
-    </div>
-    <%= f.submit "Iniciar seción" %>
-  <% end  %>
-
+<%= turbo_frame_tag @user do %>
   <div>
-    <%= link_to "Crear una cuenta", "#" %>
+    <%= form_with model: @user, url: login_path do |f| %>
+      <div>
+        <%= f.label :rfc, 'RFC' %>
+        <%= f.text_field :rfc, placeholder: 'RFC' %>
+      </div>
+      <div>
+        <%= f.label :password, 'Contraseña' %>
+        <%= f.text_field :password, placeholder: 'Contraseña' %>
+      </div>
+      <%= f.submit "Iniciar seción" %>
+    <% end  %>
+
+    <div>
+      <%= link_to "Crear una cuenta", new_user_path %>
+    </div>
   </div>
-</div>
+<% end %>
