@@ -16,6 +16,10 @@
       <%= f.label :password, 'Contraseña' %>
       <%= f.password_field :password, placeholder: 'Contraseña' %>
     </div>
+    <div>
+      <%= f.label :Unidad, "Unidad" %>
+      <%= f.select :unity_id, get_unities() %>
+    </div>
     <%= f.submit "Crear cuenta" %>
   <% end %>
   <div>
